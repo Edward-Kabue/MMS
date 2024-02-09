@@ -34,6 +34,10 @@ class TasksController extends Controller
     public function create()
     {
         //add a new task fetching all the users from the database
+        //redirect if the user is not authenticated
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
         $users = User::all();
         return view('tasks.create',compact('users'));
     }
