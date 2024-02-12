@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tasks::class);
     }
+    //A user has many posts
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

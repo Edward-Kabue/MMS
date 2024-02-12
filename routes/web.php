@@ -20,6 +20,12 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', function () {
     return view('welcome');
 });
+//create a named route called welcome
+//Named routes allow you to generate URLs 
+//without being coupled to the actual URL defined in the route
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
 // tasks routes
 Route::resource('tasks', TasksController::class);
 
@@ -63,4 +69,3 @@ Route::middleware('auth')->group(function () {
  * Include the authentication routes file.
  */
 require __DIR__.'/auth.php';
-
