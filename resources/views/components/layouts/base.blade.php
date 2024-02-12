@@ -1,20 +1,35 @@
-<x-html :title="isset($title) ? $title . ' | ' . config('app.name') : ''" class="bg-white h-screen antialiased leading-none">
-    <x-slot name="head">
-        <x-social-meta title="{{ $component->title() }}"
-            description="Curate your bucket list and keep track of your next trips. Search for the most popular destinations on our planet." />
+<!DOCTYPE html>
 
-        <script src="{{ asset('js/app.js') }}" defer></script>
+<html>
 
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @livewireStyles
-        @bukStyles
-    </x-slot>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{ $slot }}
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <x-layouts.footer />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    @livewireScripts
-    @bukScripts
-</x-html>
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<x-slot name="head">
+
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
+</x-slot>
+
+{{ $slot }}
+
+<x-layouts.footer />
+
+</html>
