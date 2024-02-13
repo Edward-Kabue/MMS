@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+    //A user has many leads
+    public function leads()
+    {
+        return $this->hasMany(Lead::class);
+    }
 }

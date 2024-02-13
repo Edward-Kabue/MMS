@@ -16,10 +16,17 @@
                 </div>
                 <!--Add a user dropdown to select the user who created the post-->
                 <div class="mb-4">
-                    <button type="submit"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create
-                        Post</button>
-                </div>
+                    <label for="user_id" class="block text-gray-700">User</label>
+                    <select name="user_id" id="user_id" class="form-select mt-1 block w-full" required>
+                        @foreach ($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="mb-4">
+                        <button type="submit"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create
+                            Post</button>
+                    </div>
             </form>
         </div>
     </div>

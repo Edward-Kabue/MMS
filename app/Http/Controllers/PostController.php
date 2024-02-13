@@ -21,7 +21,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        $users = User::all();
+        return view('post.create', compact('users'));
     }
 
     /**

@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\LeadController;
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\ProfileController;
 
@@ -28,11 +29,20 @@ Route::get('/', function () {
 //     return view('welcome');
 // });
 // tasks routes
-Route::resource('tasks', TasksController::class);
+Route::resource('/tasks', TasksController::class)->middleware(['auth', 'verified']);
 
 // posts routes
 //Route::get('/post',[PostController::class, 'index'])->name('postIndex');
 Route::resource('post', PostController::class);
+
+
+// leads routes
+Route::resource('lead', LeadController::class);
+
+
+
+
+
 /**
  * Route for displaying the dashboard.
  *
