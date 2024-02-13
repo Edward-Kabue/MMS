@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('message');
+            $table->string('message')->nullable();
             //value in dollars
             $table->float('value')->nullable()->default(123.45);
             $table->timestamps();

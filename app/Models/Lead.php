@@ -12,8 +12,8 @@ class Lead extends Model
         'name',
         'email',
         'phone',
-        'message',
-        'value',
+        'message'
+        
     ];
     //relationship between the lead and the user
     public function user()

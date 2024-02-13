@@ -38,17 +38,14 @@ class LeadController extends Controller
             'phone' => 'required',
         ]
     );
-    $lead = new Lead([
-        'name' => $request->get('name'),
-        'email' => $request->get('email'),
-        'phone' => $request->get('phone'),
-        'message' => $request->get('message'),
-        'value' => $request->get('value')   
-    ]);
+    //create a new lead
+    Lead::create($request->all());
        $notification = array(
         'message' => 'Request successful!',
         'alert-type' => 'success'
     );
+    //die and dump
+    //dd($request->all());
          return redirect()->route('welcome')->with($notification);
     }
 
