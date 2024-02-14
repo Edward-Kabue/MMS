@@ -17,14 +17,14 @@ class TasksResource extends Resource
 {
     protected static ?string $model = Tasks::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-document-arrow-down';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 //
-                Forms\Components\TextInput::make('title')
+                Forms\Components\TextInput::make('name')
                     ->label('Title')
                     ->required(),
                 Forms\Components\Textarea::make('description')
@@ -40,7 +40,7 @@ class TasksResource extends Resource
         return $table
             ->columns([
                 //
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('description')

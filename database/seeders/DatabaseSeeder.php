@@ -27,8 +27,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-      Tasks::factory(10)->create();
+      //Tasks::factory(10)->create();
        //import post seeder
-      $this->call(PostSeeder::class);
+      //$this->call(PostSeeder::class);
+      //import roles and permissions seeder
+      $this->call(RolesAndPermissionsSeeder::class);
     }
 }

@@ -17,7 +17,7 @@ class User extends Authenticatable
     //use HasApiTokens trait which is used to issue API tokens to users
     //use Notifiable trait which is used to send notifications to users
     
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +25,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'is_admin',
         'name',
         'email',
         'password',
