@@ -24,4 +24,4 @@ jobs:
           mkdir -p database
           touch database/database.sqlite
       - name: Execute tests (Unit and Feature tests) via Pest
-        run: php artisan pest
+        run: php artisan test
