@@ -25,5 +25,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Update Task</button>
         </form>
-    </div>
+
+
 </x-app-layout>

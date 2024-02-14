@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TasksController;
+use App\Http\Controllers\LeadController;
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\TasksController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 
@@ -20,9 +22,26 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+//create a named route called welcome
+//Named routes allow you to generate URLs 
+//without being coupled to the actual URL defined in the route
+// Route::get('/welcome', function () {
+//     return view('welcome');
+// });
 // tasks routes
-Route::resource('tasks', TasksController::class);
+Route::resource('/tasks', TasksController::class)->middleware(['auth', 'verified']);
+
+// posts routes
+//Route::get('/post',[PostController::class, 'index'])->name('postIndex');
+Route::resource('post', PostController::class);
+
+
+// leads routes
+Route::resource('lead', LeadController::class);
+
+
+
 
 
 /**
@@ -63,4 +82,6 @@ Route::middleware('auth')->group(function () {
 /**
  * Include the authentication routes file.
  */
+
 require __DIR__.'/auth.php';
+
