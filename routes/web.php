@@ -6,6 +6,7 @@ use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -49,7 +50,7 @@ Route::resource('lead', LeadController::class);
  * @return \Illuminate\Contracts\View\View
  */
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return app()->make(DashboardController::class)->index();
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 /**
@@ -81,4 +82,6 @@ Route::middleware('auth')->group(function () {
 /**
  * Include the authentication routes file.
  */
+
 require __DIR__.'/auth.php';
+

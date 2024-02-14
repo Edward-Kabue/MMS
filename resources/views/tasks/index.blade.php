@@ -1,22 +1,4 @@
-
-<!--extend the layout from the app.blade.php file
-using the x-app-layout component-->
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-4">
-            {{ __('Tasks') }}
-        </h2>
-        <!-- add link to create task route -->
-
-        <a href="{{ route('tasks.create') }}"
-            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add Task</a>
-
-
-    </x-slot>
-
-
-
-
+<x-home-layout>
     <div class="container mx-auto py-8">
         <!-- display a table of tasks -->
         <table class="table-auto mx-auto">
@@ -78,7 +60,8 @@ using the x-app-layout component-->
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Show</a>
 
 
-                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;">
+                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST"
+                                style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" onclick="showDeleteToast()"
@@ -104,6 +87,4 @@ using the x-app-layout component-->
             </tbody>
         </table>
     </div>
-
-</x-app-layout>
-
+</x-home-layout>
