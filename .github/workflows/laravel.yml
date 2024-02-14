@@ -1,11 +1,7 @@
 ##create a workflow for a laravel project
 name: Laravel CI
 
-on:
-  push:
-    branches: [auth]
-  pull_request:
-    branches: [filament]
+on: pull_request
 
 jobs:
   tests:
