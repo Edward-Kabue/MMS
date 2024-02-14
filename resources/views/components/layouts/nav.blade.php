@@ -45,12 +45,12 @@
                            </a>
 
                            @auth
-                               <a href="{{ route('dashboard') }}"
+                               <a href="{{ route('admin') }}"
                                    class="ml-8 font-medium text-indigo-600 hover:text-indigo-900 focus:outline-none focus:text-indigo-700 transition duration-150 ease-in-out">
                                    {{ __('Dashboard') }}
                                </a>
                            @else
-                               <a href="{{ route('login') }}"
+                               <a href="/admin/login"
                                    class="ml-8 font-medium text-indigo-600 hover:text-indigo-900 focus:outline-none focus:text-indigo-700 transition duration-150 ease-in-out">
                                    {{ __('Login') }}
                                </a>
@@ -76,7 +76,7 @@
                            </div>
 
                            <div class="px-2 pt-2 pb-3">
-                               <a href="{{ route('welcome') }}"
+                               <a href=""
                                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out">
                                    {{ config('app.name') }}
                                </a>
@@ -96,12 +96,12 @@
 
                            <div>
                                @auth
-                                   <a href="{{ route('welcome') }}"
+                                   <a href="{{ route('admin') }}"
                                        class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out">
                                        {{ __('Dashboard') }}
                                    </a>
                                @else
-                                   <a href="{{ route('login') }}"
+                                   <a href="/admin/login"
                                        class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out">
                                        {{ __('Login') }}
                                    </a>

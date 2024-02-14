@@ -24,6 +24,14 @@ class TasksResource extends Resource
         return $form
             ->schema([
                 //
+                Forms\Components\TextInput::make('title')
+                    ->label('Title')
+                    ->required(),
+                Forms\Components\Textarea::make('description')
+                    ->label('Description')
+                    ->required(),
+                Forms\Components\Checkbox::make('completed')
+                    ->label('Completed'),
             ]);
     }
 
@@ -32,6 +40,12 @@ class TasksResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('description')
+                    ->searchable(),
+                Tables\Columns\BooleanColumn::make('completed')
             ])
             ->filters([
                 //
