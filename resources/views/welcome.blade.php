@@ -1,3 +1,4 @@
+
 <x-layouts.base>
     <div class=" mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6   lg:px-8 ">
         <div class="sm:text-center lg:text-left">
@@ -140,3 +141,4 @@
     </div>
 
 </x-layouts.base>
+

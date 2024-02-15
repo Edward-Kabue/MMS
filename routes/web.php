@@ -6,6 +6,7 @@ use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -37,4 +38,5 @@ Route::resource('post', PostController::class);
 
 
 // leads routes
+
 Route::resource('lead', LeadController::class);
