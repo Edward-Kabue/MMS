@@ -31,6 +31,6 @@ class DatabaseSeeder extends Seeder
        //import post seeder
       //$this->call(PostSeeder::class);
       //import roles and permissions seeder
-      $this->call(RolesAndPermissionsSeeder::class);
+      //$this->call(RolesAndPermissionsSeeder::class);
     }
 }
