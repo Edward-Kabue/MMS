@@ -9,7 +9,9 @@ use Filament\Resources\Pages\EditRecord;
 class EditContact extends EditRecord
 {
     protected static string $resource = ContactResource::class;
-
+    protected function getRedirectUrl(): string {
+        return $this->getResource()::getUrl('index');
+    }
     protected function getHeaderActions(): array
     {
         return [
