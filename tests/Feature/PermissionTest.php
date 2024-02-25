@@ -12,19 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class PermissionTest extends TestCase
 {
     use HandlesAuthorization;
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-    //test the permission policy using   
-    //$salesPersonRole = Role::create(['name' => 'sales'])->syncPermissions([
- //  $adminPermission1,
-//  ]);;
+    use RefreshDatabase;
     public function test_sales_person_can_create_permission(): void
     {
         //first do a migration of the users table

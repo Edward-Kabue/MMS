@@ -8,15 +8,7 @@ use Tests\TestCase;
 
 class MigrationTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
+    use RefreshDatabase;
     //perform all migration
     public function test_all_migration(): void
     {
