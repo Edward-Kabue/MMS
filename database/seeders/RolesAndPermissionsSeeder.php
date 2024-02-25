@@ -18,7 +18,7 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run(): void
     {
-        //diffrence between the roles and permissions
+        //difference between the roles and permissions
         //roles are used to group permissions together
         //permissions are used to grant access to a user to perform a specific action
         // reset cached roles and permissions
