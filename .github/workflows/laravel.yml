@@ -23,7 +23,5 @@ jobs:
         run: |
           mkdir -p database
           touch database/database.sqlite
-      - name: Run Migrations
-        run: php artisan migrate --force
       - name: Run Tests
         run: php artisan test
