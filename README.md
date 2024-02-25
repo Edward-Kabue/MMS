@@ -15,54 +15,96 @@ This CRM, Todist-CRM, is designed to help you manage and analyze customer intera
 -   Analytics and reporting
 -   And more...
 
-## Installation
+## Entities
 
-Follow these steps to get Todist-CRM up and running:
+---
 
-1. Clone the repository:
+### Contact:
 
-```bash
-git clone https://github.com/Edward-Kabue/Todoist-crm.git
-```
+-   Represents a person or organization you interact with.
+-   Attributes:
+    -   ID (primary key)
+    -   name
+    -   email
+    -   phone number
+    -   address
+    -   website
+    -   social media links
+    -   notes
 
-2. Navigate into the project directory:
+### Organization:
 
-```bash
-cd todist-crm
-```
+-   Represents a company or other group you interact with.
+-   Attributes:
+    -   ID (primary key)
+    -   name
+    -   website
+    -   industry
+    -   size
+    -   location
+    -   notes
 
-3. Install the PHP dependencies:
+### Deal:
 
-```bash
-composer install
-```
+-   Represents a potential or ongoing sales opportunity.
+-   Attributes:
+    -   ID (primary key)
+    -   name
+    -   stage (e.g., lead, qualified, proposal, closed won, closed lost)
+    -   value
+    -   closing date
+    -   probability
+    -   contact ID (foreign key)
+    -   organization ID (foreign key)
 
-4. Copy the example environment file and configure it to match your environment:
+### Task:
 
-```bash
-cp .env.example .env
-```
+-   Represents a specific action item that needs to be completed.
+-   Attributes:
+    -   ID (primary key)
+    -   name
+    -   due date
+    -   priority
+    -   status (e.g., open, in progress, completed)
+    -   description
+    -   contact ID (foreign key)
+    -   deal ID (foreign key)
 
-5. Generate an application key:
+### Activity:
 
-```bash
-php artisan key:generate
-```
+-   Represents an interaction with a contact or organization (e.g., phone call, email, meeting, event).
+-   Attributes:
+    -   ID (primary key)
+    -   type (e.g., phone call, email, meeting, event)
+    -   date
+    -   time
+    -   subject
+    -   notes
+    -   contact ID (foreign key)
+    -   deal ID (foreign key)
+    -   user ID (foreign key)
 
-6. Run the database migrations (Set your database connection in `.env` before migrating):
+### User:
 
-```bash
-php artisan migrate
-```
+-   Represents a person who uses the system.
+-   Attributes:
+    -   ID (primary key)
+    -   name
+    -   email
+    -   password
+    -   role (e.g., administrator, salesperson, customer service representative)
 
-7. Start the local development server:
+## Relationships
 
-```bash
-php artisan serve
-```
+---
 
-You should now be able to access the application at `http://localhost:8000`.
+-   One Contact can belong to one Organization (one-to-one).
+-   One Deal can be associated with one Contact and one Organization (many-to-many).
+-   One Task can be associated with one Deal (many-to-one).
+-   One Activity can be associated with one Contact, one Deal, and one User (many-to-many).
+-   One User can create many Activities (one-to-many).
 
-## License
+### Tech Stack
 
-Todist-CRM is open-sourced software licensed under the [MIT license](LICENSE.md).
+-   Laravel 10.x
+-   Filament 3.2
