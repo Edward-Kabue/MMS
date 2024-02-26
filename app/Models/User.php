@@ -25,6 +25,19 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenant
     use HasCompanies;
     use Notifiable, HasRoles;
 
+
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class);
+    }
+
+    //relationship between the lead and the user
+    public function leads()
+    {
+        return $this->hasMany(Lead::class);
+    }
+   
+
     public function canAccessPanel(Panel $panel): bool
     {
         return true;

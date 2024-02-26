@@ -20,9 +20,9 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
 //create a named route called welcome
 //Named routes allow you to generate URLs 
 //without being coupled to the actual URL defined in the route

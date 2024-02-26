@@ -42,6 +42,7 @@ class PermissionPolicy
     public function update(User $user, Permission $permission): bool
     {
         //
+        return $user->hasAnyRole(['super-admin', 'admin']);
     }
 
     /**

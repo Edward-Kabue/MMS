@@ -28,19 +28,10 @@ class LeadResource extends Resource
                 Forms\Components\TextInput::make('email')->label('Email')->required(),
                 Forms\Components\TextInput::make('phone')->label('Phone')->required(),
                 Forms\Components\TextInput::make('message')->label('Message'),
-                //give a dropdown for the value
-                Forms\Components\Select::make('value')->label('Value')->options([
-                    '100' => '$100',
-                    '200' => '$200',
-                    '300' => '$300',
-                    '400' => '$400',
-                    '500' => '$500',
-                    '600' => '$600',
-                    '700' => '$700',
-                    '800' => '$800',
-                    '900' => '$900',
-                    '1000' => '$1000',
-                ]),
+                Forms\Components\TextInput::make('value')->label('Value') 
+                ->numeric()
+                ->prefix('KES')
+                ->maxValue(42949672.95),
                 
             ]);
     }
@@ -49,7 +40,8 @@ class LeadResource extends Resource
     {
         return $table
             ->columns([
-                //
+                //modify such that I can only view leads i created
+                
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('email')->searchable(),
                 Tables\Columns\TextColumn::make('phone')->searchable(),
