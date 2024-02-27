@@ -2,29 +2,66 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Panel;
-use App\Models\Lead;
-use App\Models\Post;
-use App\Models\Tasks;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Collection;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\HasTenants;
+use Wallo\FilamentCompanies\HasCompanies;
 use Filament\Models\Contracts\FilamentUser;
+use Wallo\FilamentCompanies\HasProfilePhoto;
+use Filament\Models\Contracts\HasDefaultTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-//Authenticatable is a trait that is used to authenticate users
-//Restrict admin access to filament panel
-
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenants, HasDefaultTenant
 {
-    //use HasFactory trait which is a factory for creating model instances
-    //use HasApiTokens trait which is used to issue API tokens to users
-    //use Notifiable trait which is used to send notifications to users
-    
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens;
+    use HasFactory;
+    use HasProfilePhoto;
+    use HasCompanies;
+    use Notifiable, HasRoles;
+
+
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class);
+    }
+
+    //relationship between the lead and the user
+    public function leads()
+    {
+        return $this->hasMany(Lead::class);
+    }
+   
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true;
+    }
+
+    public function getTenants(Panel $panel): array|Collection
+    {
+        return $this->allCompanies();
+    }
+
+    public function canAccessTenant(Model $tenant): bool
+    {
+        return $this->belongsToCompany($tenant);
+    }
+
+    public function getDefaultTenant(Panel $panel): ?Model
+    {
+        return $this->currentCompany;
+    }
+
+    public function getFilamentAvatarUrl(): string
+    {
+        return $this->profile_photo_url;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -32,11 +69,7 @@ class User extends Authenticatable implements FilamentUser
      * @var array<int, string>
      */
     protected $fillable = [
-        'is_admin',
-        'name',
-        'email',
-        'password',
-       
+        'name', 'email', 'password',
     ];
 
     /**
@@ -56,26 +89,14 @@ class User extends Authenticatable implements FilamentUser
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
-    //relationships
-    //A user has many tasks
-    public function tasks()
-    {
-        return $this->hasMany(Tasks::class);
-    }
-    //A user has many posts
-    public function posts()
-    {
-        return $this->hasMany(Post::class);
-    }
-    //A user has many leads
-    public function leads()
-    {
-        return $this->hasMany(Lead::class);
-    }
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return $this->is_admin;
-    }
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
 }

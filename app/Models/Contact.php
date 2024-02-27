@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Contact extends Model
 {
     use HasFactory;
-    protected $fillable = ['first_name', 'last_name', 'email', 'phone', 'job_title'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'phone', 'job_title', 'organization_id'];
     //Relatoinship with the organization model
     public function organization()
     {
