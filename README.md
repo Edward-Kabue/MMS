@@ -66,7 +66,3 @@ You should now be able to access the application at `http://localhost:8000`.
 ## License
 
 Todist-CRM is open-sourced software licensed under the [MIT license](LICENSE.md).
-
-```
-
-```

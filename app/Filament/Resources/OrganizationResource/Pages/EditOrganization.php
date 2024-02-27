@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\RoleResource\Pages;
+namespace App\Filament\Resources\OrganizationResource\Pages;
 
-use App\Filament\Resources\RoleResource;
+use App\Filament\Resources\OrganizationResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditRole extends EditRecord
+class EditOrganization extends EditRecord
 {
-    protected static string $resource = RoleResource::class;
+    protected static string $resource = OrganizationResource::class;
 
     protected function getRedirectUrl(): string {
         return $this->getResource()::getUrl('index');
