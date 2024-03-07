@@ -12,7 +12,6 @@ class ContactTest extends TestCase
 {
  use RefreshDatabase;
    
-    //Fetch the user with super admin role and create an organization
     public function test_can_create_contact(): void {
         $user = User::factory()->create();
         $this->actingAs($user);
