@@ -4,8 +4,6 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
