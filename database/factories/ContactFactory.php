@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\organization;
+use App\Models\Organization;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class ContactFactory extends Factory
     public function definition(): array
     {
         return [
-                'organization_id' => Organization::factory(),
+                'organization_id' => Organization::factory()->create(),
                 'first_name' => $this->faker->firstName,
                 'last_name' => $this->faker->lastName,
                 'email' => $this->faker->email,
