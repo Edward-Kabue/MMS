@@ -25,3 +25,12 @@ jobs:
           touch database/database.sqlite
       - name: Run Tests
         run: php artisan test
+      - name: Install xdebug
+        run: sudo apt-get install php-xdebug
+      - name: Run Tests with Code Coverage
+        run: php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-clover=coverage.xml
+      - name: Upload Coverages
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage.xml
