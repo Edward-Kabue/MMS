@@ -22,7 +22,9 @@ class UserResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+        
             ->schema([
+                Forms\Components\Section::make([
                 Forms\Components\Toggle::make('is_admin')
                     ->required(),
                 Forms\Components\TextInput::make('name')
@@ -37,7 +39,8 @@ class UserResource extends Resource
                     ->password()
                     ->required()
                     ->maxLength(255),
-            ]);
+            ])        
+        ]);
     }
 
     public static function table(Table $table): Table
@@ -45,7 +48,8 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\IconColumn::make('is_admin')
-                    ->boolean(),
+                    ->boolean()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')

@@ -23,9 +23,11 @@ class ContactResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('organization_id')
+                //select org from the org table
+                Forms\Components\Select::make('organization_id')
+                    ->relationship('organization', 'name')
                     ->required()
-                    ->numeric(),
+                    ->preload(),
                 Forms\Components\TextInput::make('first_name')
                     ->required()
                     ->maxLength(255),
@@ -50,8 +52,8 @@ class ContactResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('organization_id')
-                    ->numeric()
+                //display the orgname
+                Tables\Columns\TextColumn::make('organization.name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('first_name')
                     ->searchable(),

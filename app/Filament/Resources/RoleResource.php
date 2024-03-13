@@ -21,10 +21,16 @@ use App\Filament\Resources\RoleResource\RelationManagers\PermissionsRelationMana
 class RoleResource extends Resource
 {
     protected static ?string $model = Role::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+   
+    protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
     protected static ?string $navigationGroup = 'Settings';
-
+  
+    /**
+     * Define the form schema for creating or updating a role.
+     *
+     * @param Form $form The form instance.
+     * @return Form The updated form instance.
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -43,6 +49,12 @@ class RoleResource extends Resource
             ]);
     }
 
+    /**
+     * Define the table columns, filters, actions, and bulk actions for the role resource.
+     *
+     * @param Table $table The table instance.
+     * @return Table The updated table instance.
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -55,7 +67,9 @@ class RoleResource extends Resource
                     ->searchable(),
             ])
             ->filters([
-                //
+                //this section is for the filters on the table
+                //An example is shown below
+                // Filters\RoleFilter::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -67,14 +81,23 @@ class RoleResource extends Resource
             ]);
     }
 
+    /**
+     * Get the relations associated with the role resource.
+     *
+     * @return array The array of relation classes.
+     */
     public static function getRelations(): array
     {
         return [
-            //
             PermissionsRelationManager::class,
         ];
     }
 
+    /**
+     * Get the pages associated with the role resource.
+     *
+     * @return array The array of page routes.
+     */
     public static function getPages(): array
     {
         return [

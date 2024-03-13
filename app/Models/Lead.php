@@ -12,7 +12,8 @@ class Lead extends Model
         'name',
         'email',
         'phone',
-        'message'
+        'message',
+        'value'
         
     ];
     //relationship between the lead and the user
