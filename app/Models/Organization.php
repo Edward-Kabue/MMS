@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\contact;
+
+use App\Models\Contact;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -13,7 +14,7 @@ class Organization extends Model
     //Relatoinship with the contact model
     public function contacts()
     {
-        return $this->hasMany(contact::class);
+        return $this->hasMany(Contact::class);
     }
     
 }

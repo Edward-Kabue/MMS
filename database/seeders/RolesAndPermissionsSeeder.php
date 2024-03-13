@@ -89,7 +89,7 @@ class RolesAndPermissionsSeeder extends Seeder
              $adminPermission2,
              $userPermission1,
          ]);
-         $moderatorRole = Role::create(['name' => 'moderator'])->syncPermissions([
+         $moderatorRole = Role::create(['name' => 'manager'])->syncPermissions([
              $userPermission2,
              $rolePermission2,
              $permission2,
@@ -119,7 +119,7 @@ class RolesAndPermissionsSeeder extends Seeder
          ])->assignRole($adminRole);
  
          User::create([
-             'name' => 'moderator',
+             'name' => 'manager',
              'is_admin' => 1,
              'email' => 'moderator@admin.com',
              'email_verified_at' => now(),
