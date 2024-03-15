@@ -17,4 +17,13 @@ class Contact extends Model
     {
         return $this->belongsTo(Organization::class);
     }
+    public function quotes()
+    {
+        return $this->hasMany(Quote::class);
+    }
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+    
 }

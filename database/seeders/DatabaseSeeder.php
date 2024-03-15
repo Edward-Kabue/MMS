@@ -32,7 +32,16 @@ class DatabaseSeeder extends Seeder
       Company::factory(10)->create();
        //import post seeder
       $this->call(PostSeeder::class);
-      //import roles and permissions seeder
+          //create organization seeder
+          $this->call(OrganizationSeeder::class);
+          //create contact seeder
+          $this->call(ContactSeeder::class);
+          //create quote seeder
+      $this->call(QuoteSeeder::class);
+          //create invoice seeder
+      $this->call(InvoiceSeeder::class);
+      
+   //import roles and permissions seeder
       $this->call(RolesAndPermissionsSeeder::class);
     }
 }
