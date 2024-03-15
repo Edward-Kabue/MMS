@@ -21,8 +21,6 @@ class QuoteSeeder extends Seeder
             'expiry_date' => '2024-03-22',
             'total' => 1000.00,
             'status' => 'draft', 
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
         //create another
         \DB::table('quotes')->insert([
@@ -33,8 +31,6 @@ class QuoteSeeder extends Seeder
             'expiry_date' => '2024-03-22',
             'total' => 2000.00,
             'status' => 'draft',
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
     }
 }

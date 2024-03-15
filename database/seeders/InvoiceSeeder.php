@@ -21,8 +21,6 @@ class InvoiceSeeder extends Seeder
             'invoice_date' => '2024-03-15',
             'due_date' => '2024-03-22',
             'total' => 1000.00,
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
     
         \DB::table('invoices')->insert([
@@ -33,8 +31,6 @@ class InvoiceSeeder extends Seeder
             'invoice_date' => '2024-03-15',
             'due_date' => '2024-03-22',
             'total' => 2000.00,
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
 
     }
