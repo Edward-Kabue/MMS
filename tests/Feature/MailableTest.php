@@ -8,13 +8,12 @@ use Tests\TestCase;
 
 class MailableTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
+   //assert that there is a file in the mail folder
+    public function test_mailable_file_exists(): void
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $this->assertFileExists(app_path('Mail/InvoiceMailer.php'));
     }
+  
+   
+   
 }

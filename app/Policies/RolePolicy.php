@@ -2,12 +2,14 @@
 
 namespace App\Policies;
 
+
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 use Illuminate\Auth\Access\Response;
-use Spatie\Permission\Models\Permission;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PermissionPolicy
+
+class RolePolicy
 {
     use HandlesAuthorization;
     /**
@@ -15,14 +17,13 @@ class PermissionPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
         return $user->hasAnyRole(['super-admin', 'admin']);
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Permission $permission): bool
+    public function view(User $user, Role $role): bool
     {
         return $user->hasAnyRole(['super-admin', 'admin']);
     }
@@ -32,41 +33,38 @@ class PermissionPolicy
      */
     public function create(User $user): bool
     {
-        //
         return $user->hasAnyRole(['super-admin', 'admin']);
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Permission $permission): bool
+    public function update(User $user, Role $role): bool
     {
-        //
         return $user->hasAnyRole(['super-admin', 'admin']);
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Permission $permission): bool
+    public function delete(User $user, Role $role): bool
     {
-        //
         return $user->hasAnyRole(['super-admin', 'admin']);
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Permission $permission): bool
+    public function restore(User $user, Role $role): bool
     {
-        //
+        return $user->hasAnyRole(['super-admin', 'admin']);
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Permission $permission): bool
+    public function forceDelete(User $user, Role $role): bool
     {
-        //
+        return $user->hasAnyRole(['super-admin', 'admin']);
     }
 }
