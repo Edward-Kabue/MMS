@@ -20,16 +20,12 @@ class EditInvoice extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
-            Action::make('send')
-            ->label('Send Invoice')
-            ->action(function (Invoice $record, array $data) {
-                Mail::to('recipient@example.com')->send(new InvoiceMailer($record));
-
-                Notification::make()
-                    ->title('Invoice Sent')
-                    ->success()
-                    ->send();
-            })
+            //pass on the invoice id to the pdf controller when the send button is clicked
+            Action::make('Send')
+                ->message('Are you sure you want to send this invoice?')
+                ->confirmText('Send')
+                ->cancelText('Cancel')
+                ->handler(fn (Invoice $invoice) => Mail::to($invoice->contact->email)->send(new InvoiceMailer($invoice))),
           
             
         

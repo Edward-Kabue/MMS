@@ -2,13 +2,14 @@
 
 namespace App\Mail;
 
+use Dompdf\Dompdf;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class InvoiceMailer extends Mailable
 {
@@ -44,9 +45,14 @@ public function build()
  */
 private function generateInvoice()
 {
-    // Generate the invoice PDF using a library like Dompdf or Snappy PDF
-    // Save the PDF to a temporary location
-    $pdfPath = '/path/to/invoice.pdf';
+    // Generate the invoice PDF using a DomPDF instance
+    $dompdf = new Dompdf();
+//LOAD THE BLADE FILE 
+    $dompdf->loadHtml(view('invoices.pdf', ['invoice' => $this->invoice])->render());
+    //store the new invoice in the storage folder
+    $pdfPath = storage_path('app\public\invoices\invoice.pdf');
+
+    file_put_contents($pdfPath, $dompdf->output());
 
     // Store the PDF in a storage disk
     Storage::disk('public')->put('invoices/invoice.pdf', file_get_contents($pdfPath));
