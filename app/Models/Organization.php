@@ -16,5 +16,16 @@ class Organization extends Model
     {
         return $this->hasMany(Contact::class);
     }
+    //Relatoinship with the quote model
+    public function quotes()
+    {
+        return $this->hasMany(Quote::class);
+    }
+    //Relatoinship with the invoice model
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+    
     
 }

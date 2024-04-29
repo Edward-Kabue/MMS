@@ -2,29 +2,28 @@
 
 namespace App\Policies;
 
+use App\Models\Quote;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PermissionPolicy
+class QuotePolicy
 {
-    use HandlesAuthorization;
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
         //
-        return $user->hasAnyRole(['super-admin', 'admin']);
+        return $user->hasAnyRole(['super-admin', 'admin', 'sales']);
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Permission $permission): bool
+    public function view(User $user, Quote $quote): bool
     {
-        return $user->hasAnyRole(['super-admin', 'admin']);
+        //
+        return $user->hasAnyRole(['super-admin', 'admin', 'sales']);
     }
 
     /**
@@ -33,22 +32,22 @@ class PermissionPolicy
     public function create(User $user): bool
     {
         //
-        return $user->hasAnyRole(['super-admin', 'admin']);
+        return $user->hasAnyRole(['super-admin', 'admin', 'sales']);
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Permission $permission): bool
+    public function update(User $user, Quote $quote): bool
     {
         //
-        return $user->hasAnyRole(['super-admin', 'admin']);
+        return $user->hasAnyRole(['super-admin', 'admin', 'sales']);
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Permission $permission): bool
+    public function delete(User $user, Quote $quote): bool
     {
         //
         return $user->hasAnyRole(['super-admin', 'admin']);
@@ -57,7 +56,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Permission $permission): bool
+    public function restore(User $user, Quote $quote): bool
     {
         //
     }
@@ -65,7 +64,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Permission $permission): bool
+    public function forceDelete(User $user, Quote $quote): bool
     {
         //
     }
